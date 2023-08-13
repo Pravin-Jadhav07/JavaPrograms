@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class Demo {
+    public static void main(String[] args) 
+    {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("enter String ");
+        String str = sc.nextLine();
+
+        int count = 0;
+        
+        char []chArray = str.toCharArray();
+
+        for( char ch : chArray ){
+            count++;
+        }
+
+        System.out.println("Lenght of string = " + count );
+        
+        sc.close();
+    }
+}
