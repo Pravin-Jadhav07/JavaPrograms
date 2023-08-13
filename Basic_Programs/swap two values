@@ -1,0 +1,22 @@
+
+public class Demo {
+    public static void main(String[] args) 
+    {
+        int num1 = 10;
+        int num2 = 20;
+        
+//      *** using third variable ***
+        // int temp = num1;
+        // num1 = num2;
+        // num2 = temp;
+        // System.out.println( "num1 = " + num1 + " num2 = " + num2 );
+
+//      *** without using third variable ***
+        num1 = num1 + num2;      // 10+20 = 30
+        num2 = num1 - num2;      // 30-20 = 10
+        num1 = num1 - num2;      // 30-10 = 20 
+
+        System.out.println( "num1 = " + num1 + " num2 = " + num2 );
+
+    }
+}
