@@ -8,16 +8,17 @@ public class Demo {
         System.out.println("enter String ");
         String str = sc.nextLine();
 
-        char []upperCase = str.toCharArray();
+        char []upperCaseArray = str.toCharArray();
 
-        for( int i=0 ; i<upperCase.length ; i++ ){
-            char ch = upperCase[i];
+        for( int i=0 ; i<upperCaseArray.length ; i++ ){
+            char ch = upperCaseArray[i];
             if( ch >= 97 && ch <= 122 )
-                upperCase[i]= (char) (ch- 32) ;
+                upperCaseArray[i]= (char) (ch - 32) ;
         }
 
-        System.out.println(upperCase);
-        System.out.println(str);
+        String upperCaseString = new String(upperCaseArray);
+        // String upperCaseString = String.valueOf(upperCaseArray);
+        System.out.println(upperCaseString);
 
 //      ** toUpperCase() **
         // String upperCase = str.toUpperCase();
