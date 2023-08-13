@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class Demo {
+    public static void main(String[] args) 
+    {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("enter String ");
+        String str = sc.nextLine();
+
+        char []upperCaseArray = str.toCharArray();
+
+        for( int i=0 ; i<upperCaseArray.length ; i++ ){
+            char ch = upperCaseArray[i];
+            if( ch >= 65 && ch <= 90 )
+                upperCaseArray[i]= (char) (ch + 32) ;
+        }
+
+        String upperCaseString = new String(upperCaseArray);
+        // String upperCaseString = String.valueOf(upperCaseArray);
+        System.out.println(upperCaseString);
+
+//      ** toLowerCase() **
+        // String upperCase = str.toLowerCase();
+        // System.out.println(upperCase);
+        
+        sc.close();
+    }
+}
