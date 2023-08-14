@@ -1,0 +1,132 @@
+// Q2 WAP to LinkedHashSet and perform following operation on it 
+// Case 1: add element 
+// Case 2: search element 
+// Case 3: view all element 
+// Case 4: delete element 
+// Case 5: replace element 
+
+import java.util.LinkedHashSet;
+import java.util.Scanner;
+import java.util.Iterator;
+
+class Student
+{
+    private int id;
+    private String name;
+
+    public Student(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String toString(){
+        return "id : " + id + "\tname : " + name ;
+    }
+    public int hashCode(){
+        return id*10;
+    }
+    public boolean equals(Object o){
+        Student s = (Student) o;
+        return this.id == s.id;
+        // if( this.id == s.id )
+        //     return false;
+        // else
+        //     return true;
+    }
+}
+
+class Q2LinkedHashSet
+{
+    public static void main(String []args)
+    {
+        Scanner sc = new Scanner(System.in);
+        LinkedHashSet<Student> lhs = new LinkedHashSet<>();
+
+        do{
+            System.out.println("\n0.Exit\n1.Add Element\n2.Search Element\n3.View All Elements\n4.Delete Element\n5.Replace Element.\nEnter your choise");
+            int choise = sc.nextInt();
+            switch( choise ){
+                case 0 :
+                    return;
+                case 1:
+                    System.out.println("Enter id and name ");
+                    int id = sc.nextInt();
+                    sc.nextLine();
+                    String name = sc.nextLine();
+                    lhs.add( new Student(id, name) );
+                break;
+                case 2:
+                    System.out.println("Enter id for search student.");
+                    id = sc.nextInt();
+                    boolean flag = true;
+                    for( Student stud : lhs ){
+                        if( stud.getId() == id ){
+                            System.out.println(stud);
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if ( flag )
+                        System.out.println("Student not found.");
+                break;
+                case 3:
+                    for( Student stud : lhs ){
+                        System.out.println(stud);
+                    }
+                break;
+                case 4:
+                    System.out.println("Enter id for Delete student.");
+                    id = sc.nextInt();
+                    flag = true;
+                    Iterator<Student> itr = lhs.iterator();
+                    while( itr.hasNext() ){
+                        //Student s = itr.next();
+                        if( itr.next().getId() == id ){
+                            itr.remove();
+                            flag=false;
+                        }
+                    }
+                    if( flag )
+                        System.out.println("Record not found.");
+                    else
+                        System.out.println("Delete successfully.");
+                break;
+                case 5:
+                    System.out.println("Enter id for upadate.");
+                    id = sc.nextInt();
+                    flag = true;
+                    for( Student s : lhs ){
+                        if( s.getId() == id ){
+                            System.out.println("enter id and name");
+                            id = sc.nextInt();
+                            sc.nextLine();
+                            name = sc.nextLine();
+                            s.setId(id);
+                            s.setName(name);
+                            flag = false;
+                        }
+                    }
+                    if( flag )
+                        System.out.println("Record not found.");
+                    else
+                        System.out.println("Updated successfully.");
+                break;
+                default:
+                    System.out.println("Invalid choise");
+            }
+
+        }while( true );
+
+    }
+}
