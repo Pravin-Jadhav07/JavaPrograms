@@ -1,0 +1,22 @@
+
+class Demo
+{
+    public static void main(String[] args) {
+        
+        try{
+            int ans = 1/0;
+            System.out.println(ans);
+        }   
+        catch( ArithmeticException e){
+            System.out.println(e);
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        finally{
+            System.out.println("you are done.");
+        }
+
+
+    }
+}
