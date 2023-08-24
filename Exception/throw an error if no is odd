@@ -1,0 +1,33 @@
+
+// thow an error when number is odd.
+
+import java.util.Scanner;
+
+class Demo
+{
+    public static void main(String[] args) {
+        
+        
+        System.out.println("enter number ");
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+
+        try{
+            if( num%2 != 0 ){
+                throw new Exception("This is odd.");
+            }
+            else{
+                System.out.println( "number in even.");
+            }
+        }
+        catch( Exception e){
+            System.out.println(e);
+        }
+        finally{
+            System.out.println("you are done.");
+        }
+        
+
+        sc.close();
+    }
+}
