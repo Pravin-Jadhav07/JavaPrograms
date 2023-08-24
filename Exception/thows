@@ -1,0 +1,19 @@
+
+class Demo
+{
+    public static void fun() throws Exception{
+        System.out.println("this is fun");
+        // new ArithmeticException();
+        int ans = 10 / 0 ;
+       
+    }
+    public static void main(String[] args) {
+        
+        try{
+            fun();
+        }
+        catch( Exception e){
+            System.out.println(e);
+        }
+    }
+}
