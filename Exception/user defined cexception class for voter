@@ -1,0 +1,56 @@
+
+// create a class voter and thow an error when voter age is less than 18
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class AgeException extends ArithmeticException
+{
+    public String getMessage(){
+        return "You are teenager.";
+    }
+}
+
+class Voter
+{
+    private String name;
+    private int age;
+    public Voter( String name , int age ){
+        if( age < 18 )
+            throw new AgeException();
+        else{
+            this.name = name;
+            this.age = age;
+        }
+    }
+    public String toString(){
+        return "Name : " + name + "\tAge : " + age ;
+    }
+}
+class Demo
+{
+    public static void main(String[] args) {
+        
+        ArrayList<Voter> al = new ArrayList<>();
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("enter name and age ");
+        String name = sc.nextLine();
+        int age = sc.nextInt();
+        
+        try{
+            Voter v = new Voter(name, age);
+            al.add(v);
+        }   
+        catch( AgeException e){
+            System.out.println(e.getMessage());
+        }
+        
+        for( Voter votrs : al ){
+            System.out.println(votrs);
+        }
+        
+
+        sc.close();
+    }
+}
