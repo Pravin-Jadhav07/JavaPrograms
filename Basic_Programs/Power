@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class Demo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("enter base and it's index");
+        int base = sc.nextInt();
+        int index = sc.nextInt();
+
+        int pow=1 ;
+        for( int  i=1; i<=index ; i++ ){
+            pow = pow*base;
+        }
+        System.out.println(pow);
+
+        // it return floating numer   (T.C. O(log n))
+        // System.out.println(Math.pow(base, index));
+
+        sc.close();
+    }
+}
+
+
+// Input    base=2 , index=3
+// Output   8
