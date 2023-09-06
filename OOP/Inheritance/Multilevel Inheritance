@@ -1,0 +1,27 @@
+
+class Animal{  
+    void eat(){
+        System.out.println("eating...");
+    }  
+}  
+
+class BabyDog extends Animal{  
+    void weep(){
+        System.out.println("weeping...");
+    }  
+}  
+
+class Dog extends BabyDog{  
+    void bark(){
+        System.out.println("barking...");
+    }  
+}  
+
+public class MultilevelInheritance {
+    public static void main(String[] args) {
+        Dog d=new Dog();  
+        d.weep();  
+        d.bark();  
+        d.eat();  
+    }
+}
