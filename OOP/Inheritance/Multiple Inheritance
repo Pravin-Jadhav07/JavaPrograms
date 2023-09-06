@@ -1,0 +1,29 @@
+
+interface Parent1{
+    void show();
+}
+
+interface Parent2{
+    void show();
+}
+
+class Parent3 {
+    public void show(){
+        System.out.println("i am show from parent.");
+    }
+}
+
+class Child extends Parent3 implements Parent1,Parent2{
+    public void show(){
+        System.out.println("i am show from child.");
+    }
+}
+
+
+public class MultipleInheritance {
+    public static void main(String[] args) {
+        // Parent3 obj1 = new Child();
+        Child obj1 =  new Child();
+        obj1.show();
+    }
+}
