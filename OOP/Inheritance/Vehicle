@@ -1,0 +1,149 @@
+
+class Vehicle {
+    protected String model;
+    protected int registrationNumber;
+    protected int speed;
+    protected int capacity;
+    protected int cunsumption;
+
+    public Vehicle(String model, int registrationNumber, int speed, int capacity, int cunsumption) {
+        this.model = model;
+        this.registrationNumber = registrationNumber;
+        this.speed = speed;
+        this.capacity = capacity;
+        this.cunsumption = cunsumption;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public int getRegistrationNumber() {
+        return registrationNumber;
+    }
+
+    public void setRegistrationNumber(int registrationNumber) {
+        this.registrationNumber = registrationNumber;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public int getCunsumption() {
+        return cunsumption;
+    }
+
+    public void setCunsumption(int cunsumption) {
+        this.cunsumption = cunsumption;
+    }
+
+    public double fuelNeeded(double km) {
+        double fuel = 0;
+        fuel = km / cunsumption;
+        return fuel;
+    }
+
+    public double distanceCovered(double time) {
+        double distance = 0;
+        distance = time * speed;
+        return distance;
+    }
+
+    public void display() {
+        System.out.println("model       : " + model);
+        System.out.println("RegNum      : " + registrationNumber);
+        System.out.println("Speed       : " + speed);
+        System.out.println("capacity    : " + capacity);
+        System.out.println("cunsumption : " + cunsumption);
+    }
+
+}
+
+class Truck extends Vehicle {
+    int weightLimit;
+
+    public Truck(String model, int registrationNumber, int speed, int capacity, int cunsumption, int weightLimit) {
+        super(model, registrationNumber, speed, capacity, cunsumption);
+        this.weightLimit = weightLimit;
+    }
+
+    public int getWeightLimit() {
+        return weightLimit;
+    }
+
+    public void setWeightLimit(int weightLimit) {
+        this.weightLimit = weightLimit;
+    }
+
+    public void display() {
+        System.out.println("model       : " + model);
+        System.out.println("RegNum      : " + registrationNumber);
+        System.out.println("Speed       : " + speed);
+        System.out.println("capacity    : " + capacity);
+        System.out.println("cunsumption : " + cunsumption);
+        System.out.println("WtLimit     : " + weightLimit);
+    }
+}
+
+class Bus extends Vehicle {
+    int noOfPassenger;
+
+    public Bus(String model, int registrationNumber, int speed, int capacity, int cunsumption, int noOfPassenger) {
+        super(model, registrationNumber, speed, capacity, cunsumption);
+        this.noOfPassenger = noOfPassenger;
+    }
+
+    public int getNoOfPassenger() {
+        return noOfPassenger;
+    }
+
+    public void setNoOfPassenger(int noOfPassenger) {
+        this.noOfPassenger = noOfPassenger;
+    }
+
+    public void display() {
+        System.out.println("model        : " + model);
+        System.out.println("RegNum       : " + registrationNumber);
+        System.out.println("Speed        : " + speed);
+        System.out.println("capacity     : " + capacity);
+        System.out.println("cunsumption  : " + cunsumption);
+        System.out.println("noOfPassenger: " + noOfPassenger);
+    }
+
+}
+
+public class Transport {
+    public static void main(String[] args) {
+        Truck t1 = new Truck ("First", 9595, 120, 50, 8, 1000);
+
+        Bus b1 = new Bus("second",1001 , 160, 50, 10, 40);
+
+
+        System.out.println("\n\nTruck Details..........");
+        System.out.println( "You need " + t1.fuelNeeded(13) + " ltr. fuel.");
+        System.out.println( "You covered " + t1.distanceCovered(.5) +"km distance in given time.");
+        t1.display();
+
+        System.out.println("\n\nBus Details..........");
+        System.out.println( "You need " + b1.fuelNeeded(13) + " ltr. fuel.");
+        System.out.println( "You covered " + b1.distanceCovered(1.5) +"km distance in given time.");
+        b1.display();
+    }
+}
