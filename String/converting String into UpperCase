@@ -1,29 +1,35 @@
-import java.util.Scanner;
 
-public class Demo {
-    public static void main(String[] args) 
-    {
-        Scanner sc = new Scanner(System.in);
+public class StringApp {
 
-        System.out.println("enter String ");
-        String str = sc.nextLine();
+    public static String convertToUpperCase( String str ){
 
-        char []upperCaseArray = str.toCharArray();
+        String upperCaseString  = "" ;
 
-        for( int i=0 ; i<upperCaseArray.length ; i++ ){
-            char ch = upperCaseArray[i];
-            if( ch >= 97 && ch <= 122 )
-                upperCaseArray[i]= (char) (ch - 32) ;
-        }
-
-        String upperCaseString = new String(upperCaseArray);
-        // String upperCaseString = String.valueOf(upperCaseArray);
-        System.out.println(upperCaseString);
-
-//      ** toUpperCase() **
-        // String upperCase = str.toUpperCase();
-        // System.out.println(upperCase);
+        // inbuilt method
+        // upperCaseString = str.toUpperCase();
         
-        sc.close();
+        for( int i=0 ; i<str.length() ; i++ ){
+                if( str.charAt(i)>=97 && str.charAt(i)<=122 )
+                upperCaseString += (char) ( str.charAt(i)-32 );
+            else
+                upperCaseString += str.charAt(i);
+        }
+        return upperCaseString;
+
+        // Another way
+        // char characters[] = str.toCharArray();
+        // for( int i=0 ; i<characters.length ; i++ ){
+        //     if( characters[i]>=97 && characters[i]<=122 )
+        //         characters[i] = (char ) ( characters[i]-32 );
+
+        //     }
+        // return new String( characters );
+    }
+    public static void main(String[] args) {
+ 
+        String str = "Pravin Jadhav";
+        String result = convertToUpperCase( str );
+        System.out.println( result );
+
     }
 }
