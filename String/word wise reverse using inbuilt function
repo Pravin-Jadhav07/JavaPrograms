@@ -5,15 +5,15 @@ public class StringApp {
     public static String wordWiseReverse( String str ){
 
         String words[] = str.split(" ");
-        String reverseWord = "";
+        String reverseWordString = "";
 
         for( String word : words ){
             StringBuilder sb = new StringBuilder(word);
             sb.reverse();
-            reverseWord += sb + " ";
+            reverseWordString += sb + " ";
         }
-        reverseWord.trim();
-        return reverseWord;
+        reverseWordString.trim();
+        return reverseWordString;
     }
 
     public static void main(String[] args) {
