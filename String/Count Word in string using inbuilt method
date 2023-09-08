@@ -1,0 +1,24 @@
+
+
+public class StringOpn {
+    
+    public static int countWords( String str ){
+
+        if( str.length()== 0 )
+            return 0;
+
+        String newStr = str.trim();
+        
+        String words[] = newStr.split(" ");
+        int count = words.length;
+        System.out.println("end");
+        return count;
+    }
+    public static void main(String[] args) {
+        
+        String inputStr = "   I love india.\n   ";
+        int words = countWords( inputStr );
+        System.out.println( "Total Words in String " + words );
+
+    }
+}
