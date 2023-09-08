@@ -1,0 +1,37 @@
+
+
+public class StringOpn {
+    
+    public static int countWords( String str ){
+
+        if( str.isEmpty() )
+            return 0;
+
+        // this block create new string without leading space
+        String newStr = "";
+        for( int i=0 ; i<str.length() ; i++ ){
+            while( str.charAt(i)== ' ' ){
+                i++;
+            }
+            newStr = str.substring(i); 
+            break;
+        }
+        
+        int count=1;
+        for( int i=0 ; i<newStr.length()-1 ; i++ ){
+            if( newStr.charAt(i)== ' ' && newStr.charAt(i+1)!=' ' ){
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        
+        String inputStr = "   I   love india.\n   ";
+        int words = countWords( inputStr );
+        System.out.println( "Total Words in String " + words );
+
+    }
+}
