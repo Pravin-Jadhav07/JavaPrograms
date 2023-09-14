@@ -1,0 +1,27 @@
+import java.util.*;
+
+public class ClassWithMap {
+    public static void main(String[] args) {
+        
+        LinkedHashMap<String,Integer> lhm = new LinkedHashMap<>();
+        String str = "good morning india. good afternoon india.";
+        
+        String words[] = str.split(" ");
+
+        for( String word : words ){
+            Integer num = lhm.get(word);
+            if( num == null ){
+                lhm.put(word, 1);
+            }
+            else{
+                lhm.put(word, num+1);
+            }
+        }
+        // System.out.println(lhm.entrySet());
+
+        for( Map.Entry<String,Integer> m : lhm.entrySet() ){
+            System.out.println( m.getKey() +" "+ m.getValue() );
+        }
+
+    }
+}
