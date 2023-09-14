@@ -1,0 +1,22 @@
+
+
+class Fact
+{
+public static int findFact( int num )
+{
+   if( num == 0 )
+	return 1;
+   else 
+	return num*findFact( num-1);
+
+}
+
+
+public static void main(String args[])
+{
+
+ int result = findFact(4);
+ System.out.println(result);
+
+}
+}
