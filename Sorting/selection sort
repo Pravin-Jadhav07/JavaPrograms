@@ -1,0 +1,36 @@
+class SelectionSort{
+    
+    public static void selectionSrot( int arr[] ){
+        for( int i=0 ; i<arr.length-1 ; i++ ){
+            int minIndex = i;
+            //selecting min element index
+            for( int j=i+1 ; j<arr.length ; j++ ){
+                if( arr[j]<arr[minIndex] )
+                    minIndex=j;
+            }
+            //swaping min element with i
+            if( minIndex!=i ){
+                int temp=arr[i];
+                arr[i]=arr[minIndex];
+                arr[minIndex]=temp;
+            }
+        }
+    }
+
+    public static void main(String args[]){
+
+        int arr[] = { 4,2,6,8,10,1 };
+
+        System.out.println("Before sorting..");
+        for (int num : arr) {
+            System.out.println(num);
+        }
+
+        selectionSrot(arr);
+
+        System.out.println("After sorting..");
+        for (int num : arr) {
+            System.out.println(num);
+        }
+    }
+}
