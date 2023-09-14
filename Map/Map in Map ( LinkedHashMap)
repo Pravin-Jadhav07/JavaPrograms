@@ -1,0 +1,31 @@
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class MapInMap {
+    public static void main(String[] args) {
+
+        LinkedHashMap<String,LinkedHashMap<Integer,String>> dept = new LinkedHashMap<>();
+        LinkedHashMap<Integer,String> itStud = new LinkedHashMap<>();
+        itStud.put(1, "pravin");
+        itStud.put(2, "govind");
+
+        LinkedHashMap<Integer,String> cseStud = new LinkedHashMap<>();
+        cseStud.put(1, "sachin");
+        cseStud.put(2, "ganesh");
+        cseStud.put(3,null);
+
+        dept.put("IT", itStud);
+        dept.put("CSE",cseStud);
+        
+        // System.out.println( dept.entrySet());
+        for( Map.Entry<String,LinkedHashMap<Integer,String>> om : dept.entrySet() ){
+            System.out.println("dept : " + om.getKey());
+            for( Map.Entry<Integer,String> im : om.getValue().entrySet() ){
+                System.out.println( im.getKey() +" "+ im.getValue() );
+            }
+        }
+
+
+
+    }
+}
