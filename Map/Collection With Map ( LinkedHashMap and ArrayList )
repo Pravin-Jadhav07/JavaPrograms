@@ -1,0 +1,32 @@
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class CollectionWithMap {
+    public static void main(String[] args) {
+        LinkedHashMap<String,ArrayList<String>> lhm = new LinkedHashMap<>();
+        
+        ArrayList<String> india = new ArrayList<>();
+        india.add("Rohit");
+        india.add("Virat");
+        india.add("Dhoni");
+
+        ArrayList<String> australia = new ArrayList<>();
+        australia.add("Finch");
+        australia.add("green");
+        australia.add("david");
+
+        lhm.put("India", india);
+        lhm.put("Australis", australia);
+
+        // System.out.println(lhm.entrySet());
+        for( Map.Entry<String,ArrayList<String>> m: lhm.entrySet() ){
+            System.out.println( "Team : "+ m.getKey() );
+            // System.out.println( "players : " + m.getValue());
+            for( String name : m.getValue() ){
+                System.out.println( name );
+            }
+        }
+
+    }
+}
