@@ -1,0 +1,33 @@
+
+// class SingleTone
+// {
+//     static SingleTone obj = new SingleTone(); ;
+//     private SingleTone() {}
+//     public static SingleTone getInstance(){
+//         return obj;
+//     }
+// }
+
+
+class SingleTone
+{
+    private static SingleTone obj ;
+    private SingleTone() {}
+    public static SingleTone getInstance(){
+        if( obj == null ){
+            obj = new SingleTone();
+        }
+        return obj;
+    }
+}
+
+public class SingleToneClass {
+    public static void main(String[] args) {
+        SingleTone obj1 = SingleTone.getInstance();
+        SingleTone obj2 = SingleTone.getInstance();
+
+        System.out.println(obj1.hashCode());
+        System.out.println(obj2.hashCode());
+
+    }
+}
