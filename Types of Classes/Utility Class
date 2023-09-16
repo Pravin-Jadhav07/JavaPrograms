@@ -1,0 +1,15 @@
+final class Utility
+{
+    private Utility(){}
+
+    public static void staticMethod(){
+        System.out.println("i am static.");
+    }
+}
+
+
+public class UtilityClass {
+    public static void main(String[] args) {
+        Utility.staticMethod();
+    }
+}
