@@ -81,7 +81,6 @@ export class AppComponent {
 }
 ------------------------------------------
 html
-
 <div class="container">
   <h1>{{title}}</h1>
   <div class="reg-page">
@@ -131,15 +130,11 @@ html
 
         <div class="section">
           <button type="submit" class="btn  btn-primary"
-            [disabled]="regForm.invalid || password.value != cpassword.value ">Register</button>
+            [disabled]="regForm.invalid || (password.value != cpassword.value) || regForm.submitted ">Register</button>
         </div>
       </form>
     </div>
   </div>
-
-  <!-- <ul>
-    <li *ngFor="let user of users">{{user.fname}}</li>
-  </ul> -->
 
 </div>
 -------------------------------------
