@@ -1,0 +1,186 @@
+app module.ts
+
+
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+-----------------------------------------
+service
+
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class RegistrationService {
+
+  constructor( private http: HttpClient) { 
+
+  }
+  url = "http://localhost:3000/users";
+
+  getUsers(){
+    return this.http.get( this.url );
+  }
+
+  register( user: any ){
+    return this.http.post( this.url, user );
+  }
+
+
+}
+-----------------------------------
+component.ts
+
+import { Component } from '@angular/core';
+import { RegistrationService } from './services/registration.service';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'reg-form';
+
+  users:any;
+  constructor( private userData:RegistrationService ){
+    this.userData.getUsers().subscribe( (user)=>{
+      this.users=user;
+    } )
+  }
+
+  registerUser( user : any ){
+    // console.warn(user);
+    this.userData.register(user).subscribe( (user)=>{
+      console.warn(user);
+    } );
+  }
+
+}
+------------------------------------------
+html
+
+<div class="container">
+  <h1>{{title}}</h1>
+  <div class="reg-page">
+    <div class="left">
+      <h2>information</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam accusamus fuga incidunt quod optio eum rerum
+        v iusto!</p>
+    </div>
+    <div class="right">
+      <h1>REGISTRATION FORM</h1>
+      <form #regForm="ngForm" (ngSubmit)="registerUser(regForm.value)">
+        <div style="display: flex;" class="section">
+          <div>
+            <label for="fname">First Name</label>
+            <input class="input-s" type="text" name="fname" ngModel required #fname="ngModel" pattern="^[a-zA-Z]+$">
+            <span *ngIf="fname.invalid && fname.touched"><small>Enter valid name</small></span>
+          </div>
+          <div>
+            <label for="lname">Last Name</label>
+            <input class="input-s" type="text" name="lname" ngModel required #lname="ngModel" pattern="^[a-zA-Z]+$">
+            <span *ngIf="lname.invalid && lname.touched"><small>Enter valid input</small></span>
+          </div>
+        </div>
+
+        <div class="section">
+          <label for="email">Your Email</label>
+          <input class="input-l" type="email" name="email" ngModel required #email="ngModel"
+            pattern="^[A-Za-z0-9._\-]+@[A-Za-z0-9.]+\.[A-Za-z]{2,}$">
+          <span *ngIf="email.invalid && email.touched"><small>Enter valid email</small></span>
+        </div>
+
+        <div style="display: flex;" class="section">
+          <div>
+            <label for="password">Password</label>
+            <input class="input-s" type="password" name="password" ngModel required #password="ngModel" minlength="6"
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).+$">
+            <span *ngIf="password.invalid && password.touched"><small>Enter valid password</small></span>
+          </div>
+          <div>
+            <label for="cpassword">Confirm Password</label>
+            <input class="input-s" type="password" name="cpassword" ngModel required #cpassword="ngModel" minlength="6">
+            <!-- <span *ngIf="cpassword.invalid && cpassword.touched "><small>Enter valid password</small></span> -->
+            <span *ngIf="(cpassword.value != password.value) && cpassword.touched "><small>password
+                missmatch</small></span>
+          </div>
+        </div>
+
+        <div class="section">
+          <button type="submit" class="btn  btn-primary"
+            [disabled]="regForm.invalid || password.value != cpassword.value ">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- <ul>
+    <li *ngFor="let user of users">{{user.fname}}</li>
+  </ul> -->
+
+</div>
+-------------------------------------
+css
+
+
+.reg-page{
+    border: 2px solid blue;
+    display: flex;
+}
+.left{
+    background-color: aquamarine;
+    width: 50%;
+    padding: 30px;
+}
+.right{
+    border: 5px solid red;
+    width: 50%;
+    padding: 30px;
+}
+
+.right h1{
+    color: rgb(50, 50, 242);
+}
+
+label{
+    display: block;
+}
+
+.input-l{
+    width: 80%;
+}
+.input-s{
+    width: 90%;
+}
+
+.section{
+    margin: 2vh 0;
+}
+
+small{
+    color: red;
+    display: inline-block;
+}
